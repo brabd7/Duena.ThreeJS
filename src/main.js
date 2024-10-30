@@ -16,13 +16,13 @@ const rendering = createRendering(THREE);
 const world = createWorld(CANNON);
 
 // Notre joueur
-const player = new Player(THREE);
+const player = new Player(THREE, CANNON, world, camera, rendering);
 
 // Ajouter les objets statiques
 addStaticObjects(THREE, CANNON, scene, world);
 
 // Boucle d'animation de notre projet
-createAnimate(scene, camera, rendering);
+createAnimate(scene, camera, rendering, world, player);
 
 // autoResize
 autoResize(rendering, camera);
