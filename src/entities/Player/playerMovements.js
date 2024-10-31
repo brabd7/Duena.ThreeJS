@@ -2,6 +2,8 @@ export function playerMovements(player)
 {
     forwardBackwardMovement(player);
     rightLeftMovement(player);
+    jumpMovement(player);
+    slideMovement(player);
 }
 
 function forwardBackwardMovement(player)
@@ -43,4 +45,20 @@ function rightLeftMovement(player)
         player.playerBody.body.velocity.x -= player.sideVector3.x * player.speedMove;
         player.playerBody.body.velocity.z -= player.sideVector3.z * player.speedMove;
     }
+}
+
+function jumpMovement(player)
+{
+    if (player.jumpMove && player.playerBody.body.position.y <= 1)
+    {
+        player.playerBody.body.velocity.y = player.jumpForce;
+    }
+    player.jumpMove = false;
+}
+
+function slideMovement(player) {
+    if (player.slideMove && player.playerBody.body.position.y <= 1) {
+        console.log('s')
+    }
+    player.slideMove = false;
 }

@@ -2,6 +2,8 @@ export function playerControls(player)
 {
     forwardBackwardControls(player);
     rightLeftControls(player);
+    jumpControl(player);
+    slideControl(player);
 } 
 
 function forwardBackwardControls(player)
@@ -62,4 +64,24 @@ function rightLeftControls(player)
                 break;
         }
     });
+}
+
+function jumpControl(player)
+{
+    document.addEventListener('keydown', (event) => {
+        if (event.code == "Space" && !player.jumpMove)
+        {
+            player.jumpMove = true;
+        }
+    })
+}
+
+function slideControl(player)
+{
+    document.addEventListener('keydown', (event) => {
+        if (event.code == "KeyC" && !player.slideMove)
+        {
+            player.slideMove = true;
+        }
+    })
 }

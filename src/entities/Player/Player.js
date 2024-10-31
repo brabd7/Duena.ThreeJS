@@ -15,11 +15,16 @@ export class Player {
         this.playerBody = new EntityBody(this.CANNON, this.world);
         this.cameraControl = new PointerLockControls(this.camera, this.rendering.domElement);
 
-        this.speedMove = 20;
+        // Movements
+        this.speedMove = 15;
         this.forwardMove = false;
         this.backwardMove = false;
         this.rightMove = false;
         this.leftMove = false;
+        this.jumpForce = 5;
+        this.jumpMove = false;
+        this.slideMove = false;
+        this.slideForce = 0.1;
 
         this.forwardVector3 = new this.THREE.Vector3();
         this.sideVector3 = new this.THREE.Vector3();
