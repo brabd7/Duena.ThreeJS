@@ -22,6 +22,10 @@ export class Player {
         this.leftMove = false;
 
         this.forwardVector3 = new this.THREE.Vector3();
+        this.sideVector3 = new this.THREE.Vector3();
+
+        // Contrôles du joueur
+        playerControls(this);
 
         // Verrouiller le pointeur pour permettre au joueur de contrôler la caméra
         this.lockPointer();
@@ -29,9 +33,6 @@ export class Player {
 
     update()
     {
-        // Contrôles du joueur
-        playerControls(this);
-
         // Mouvements du joueur
         playerMovements(this);
 

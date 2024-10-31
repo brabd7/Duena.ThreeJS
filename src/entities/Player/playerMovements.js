@@ -1,6 +1,7 @@
 export function playerMovements(player)
 {
-    forwardBackwardMovement(player)
+    forwardBackwardMovement(player);
+    rightLeftMovement(player);
 }
 
 function forwardBackwardMovement(player)
@@ -22,5 +23,24 @@ function forwardBackwardMovement(player)
     {
         player.playerBody.body.velocity.x = 0;
         player.playerBody.body.velocity.z = 0;
+    }
+}
+
+function rightLeftMovement(player)
+{
+    // On doit calculer la droite et la gauche en fonction de la direction dans
+    // laquelle regarde le joueur car elle change tout le temps,
+    // grâce à un produit vectoriel.
+    player.sideVector3.crossVectors(player.forwardVector3, new player.THREE.Vector3(0, 1, 0)).normalize();
+
+    if (player.rightMove)
+    {
+        player.playerBody.body.velocity.x += player.sideVector3.x * player.speedMove;
+        player.playerBody.body.velocity.z += player.sideVector3.z * player.speedMove;
+    }
+    else if (player.leftMove)
+    {
+        player.playerBody.body.velocity.x -= player.sideVector3.x * player.speedMove;
+        player.playerBody.body.velocity.z -= player.sideVector3.z * player.speedMove;
     }
 }
